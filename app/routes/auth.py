@@ -24,8 +24,8 @@ def handle_login(response:Response, user:UserBase=Form(...)):
 
 
 @router.post("/register" , tags=["Auth"])
-def handle_registeration(username:str=Form(...) , password:str=Form(...)):
-      if (username and password ) and secure.register_user(username,password):
+def handle_registeration(user:UserBase=Form(...)):
+      if (user.username and user.password ) and secure.register_user(user.username,user.password):
             return JSONResponse({"success":True})
       else:
               return JSONResponse({"success":False,"message":"Registration_Failed"}, status_code=400)

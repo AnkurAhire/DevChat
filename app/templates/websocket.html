@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>WEBSOCKET</title>
+</head>
+
+<body>
+    <h1>DEVCHAT WEBSOCKET</h1>
+
+    <form onsubmit="SendMessage(event)">
+        <input type="text" id="send-input" placeholder="Type your message" />
+        <button type="submit" id="send-btn">SEND</button>
+    </form>
+
+    <ul id="message-list"></ul>
+
+    <script>
+        const ws = new WebSocket("ws://127.0.0.1:8000/chat");
+
+        ws.onopen = () => {
+            console.log("✅ WEBSOCKET CONNECTED");
+        };
+
+        ws.onmessage = (event) => {
+            console.log("📩", event.data);
+
+            const msgList = document.getElementById("message-list");
+            const li = document.createElement("li");
+            li.innerText = event.data;
+            msgList.appendChild(li);
+        };
+
+        const SendMessage = (event) => {
+            event.preventDefault();  // ❌ You had `preventDeafault` (typo)
+
+            const to = prompt("Whom TO SEND:");
+            const message = document.getElementById("send-input").value;
+            const payload = JSON.stringify({ to: to, content: message });
+
+            ws.send(payload);
+            document.getElementById("send-input").value = ""; // Clear input after sending
+        };
+    </script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+# -----------------------------
+# Python
+# -----------------------------
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Byte-compiled / optimized / DLL files
+*.pyo
+*.pyd
+*.so
+
+# Virtual Environments
+venv/
+env/
+ENV/
+.venv/
+.ENV/
+
+*.py,cover
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+
+# VS Code
+.vscode/
+
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Environments
+.env
+.env.*
+*.env
+
+
+# Pyenv
+.python-version
+
+
+.git
